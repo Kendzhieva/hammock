@@ -25,6 +25,7 @@ button{
 input, textarea{
   font-family: inherit;
   resize: none;
+  outline: none;
 }
 
 body {

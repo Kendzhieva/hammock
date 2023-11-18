@@ -1,4 +1,4 @@
-import styles from './styles';
+import styles from './sales.module.css';
 
 function Sales() {
   return (

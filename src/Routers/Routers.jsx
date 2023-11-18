@@ -1,3 +1,4 @@
+import Authorization from 'pages/Authorization';
 import Blog from 'pages/Blog';
 import Catalog from 'pages/Catalog';
 import Delivery from 'pages/Delivery';
@@ -13,6 +14,7 @@ function Routers() {
     <BrowserRouter>
       <Routes>
         <Route element={<Home />} path='/' />
+        <Route element={<Authorization />} path='/auth' />
         <Route element={<Catalog />} path='/catalog' />
         <Route element={<Detail />} path='/catalog/:productId' />
         <Route element={<Sales />} path='/sales' />
