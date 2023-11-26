@@ -1,11 +1,5 @@
-import styles from './delivery.module.css';
-
-function Delivery() {
-  return (
-    <div>
-      Delivery
-    </div>
-  );
-}
+const Delivery = () => {
+  return <div>Delivery</div>;
+};
 
 export default Delivery;

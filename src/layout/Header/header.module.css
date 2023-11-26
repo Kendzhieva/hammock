@@ -1,0 +1,81 @@
+.header {
+  width: 100%;
+}
+
+.top {
+  background-color: rgba(0, 0, 0, 0.74);
+  color: #fff;
+}
+
+.topContent {
+  padding: 6px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topTitle {
+  font-size: 12px;
+}
+
+.topList {
+  display: flex;
+  -moz-column-gap: 35px;
+  column-gap: 35px;
+  font-size: 12px;
+}
+
+.topListItem:hover {
+  text-decoration: underline;
+}
+
+.bottom {
+  background-color: rgba(113, 113, 113, 0.9);
+  color: #fff;
+}
+
+.bottomContent {
+  padding: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.call {
+  display: flex;
+  -moz-column-gap: 26px;
+  column-gap: 26px;
+  align-items: center;
+}
+
+.callTel {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.callHash {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 7px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+}
+
+.handlers {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+}
+
+.handlersLink {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.handlersLink p {
+  font-size: 12px;
+  font-weight: 700;
+}

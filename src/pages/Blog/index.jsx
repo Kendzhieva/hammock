@@ -1,11 +1,5 @@
-import styles from './blog.module.css';
-
-function Blog() {
-  return (
-    <div>
-      Blog
-    </div>
-  );
-}
+const Blog = () => {
+  return <div>Blog</div>;
+};
 
 export default Blog;
