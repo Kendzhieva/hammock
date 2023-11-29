@@ -5,9 +5,17 @@ import {
   AiOutlineShoppingCart,
   AiOutlineSearch,
 } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { authLogOut } from 'store/features/authSlise';
 
 const Header = () => {
+
+  const { user, status, error } = useSelector(state => state.authSlice)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   return (
     <header className={styles.header}>
       <div className={styles.top}>
@@ -57,6 +65,18 @@ const Header = () => {
               </a>
             </div>
             <nav className={styles.handlers}>
+              {user ?
+                <span className={styles.handlersLink} onClick={() => {
+                  dispatch(authLogOut())
+                  navigate('/')
+                }}>
+                  <AiOutlineUser size='22' />
+                  <p>выход</p>
+                </span>
+                :
+                <Link to="auth/login">Войти</Link>
+              }
+
               <Link to='/profile' className={styles.handlersLink}>
                 <AiOutlineUser size='22' />
                 <p>Личный кабинет</p>

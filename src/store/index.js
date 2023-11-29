@@ -1,11 +1,13 @@
-import {configureStore} from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { rememberReducer, rememberEnhancer } from 'redux-remember';
+import authSlice from "./features/authSlise";
 
 
-const rememberedKeys = [ 'myStateIsRemembered' ]
+const rememberedKeys = ['authSlice']
 
 const store = configureStore({
     reducer: rememberReducer({
+        authSlice: authSlice,
 
     }),
     enhancers: [rememberEnhancer(

@@ -3,8 +3,14 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import Button from 'components/Button';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useDispatch } from 'react-redux';
+import { authLogin } from 'store/features/authSlise';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
+
+  const dispatch = useDispatch()
+
   const loginSchema = yup.object().shape({
     username: yup.string().required('Обязательно напишите логин или почту'),
     password: yup.string().required('Обязательно напишите пароль'),
@@ -17,8 +23,8 @@ const Login = () => {
   } = useForm({ mode: 'onBlur', resolver: yupResolver(loginSchema) });
 
   function loginFormSubmit(data) {
-    console.log(data);
-    console.log(errors);
+    const { confirmPassword, ...other } = data
+    dispatch(authLogin(other))
   }
 
   return (
@@ -33,12 +39,19 @@ const Login = () => {
         />
         <input
           className={styles.input}
+          type='email'
+          placeholder='E-mail'
+          {...register('email')}
+        />
+        <input
+          className={styles.input}
           type='password'
           placeholder='Пароль'
           {...register('password')}
         />
       </div>
       <Button className={styles.button}>Войти</Button>
+      <p className={styles.other}>нет аккаунта, попробуй <Link to="/auth/register">Зарегистрироваться</Link></p>
     </form>
   );
 };

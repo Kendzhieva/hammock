@@ -85,7 +85,7 @@ const Reviews = ({ isMobile = false }) => {
               </SwiperSlide>
             </Swiper>
             <div className={styles.pagination}></div>
-            <div className={styles.all}>Читать все отзывы</div>
+            <button className={styles.all}>Читать все отзывы</button>
           </div>
         </div>
       </div>

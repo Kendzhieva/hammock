@@ -5,8 +5,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Button from 'components/Button';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { authRegister } from 'store/features/authSlise';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
+
+  const dispatch = useDispatch()
   const registerSchema = yup.object().shape({
     username: yup.string().required('Обязательно напишите логин'),
     email: yup
@@ -35,8 +40,8 @@ const Register = () => {
   } = useForm({ mode: 'onBlur', resolver: yupResolver(registerSchema) });
 
   function registerFormSubmit(data) {
-    console.log(data);
-    console.log(errors);
+    const { confirmPassword, ...other } = data
+    dispatch(authRegister(other))
   }
 
   useEffect(() => {
@@ -60,14 +65,14 @@ const Register = () => {
           placeholder='Логин'
           {...register('username')}
         />
-        <input className={styles.input} type='text' placeholder='ФИО' />
+        <input className={styles.input} type='text' {...register('fullName')} placeholder='ФИО' />
         <input
           className={styles.input}
           type='mail'
           placeholder='E-mail'
           {...register('email')}
         />
-        <input className={styles.input} type='tel' placeholder='Телефон' />
+        <input className={styles.input} type='tel' {...register('phone')} placeholder='Телефон' />
         <input
           className={styles.input}
           type='password'
@@ -82,6 +87,7 @@ const Register = () => {
         />
       </div>
       <Button className={styles.button}>Зарегестрировать</Button>
+      <p className={styles.other}>есть аккаунта, попробуй <Link to="/auth/login">Войти</Link></p>
     </form>
   );
 };

@@ -38,7 +38,7 @@
 }
 
 .button {
-  margin: 40px 0 27px;
+  margin: 40px 0 0;
 }
 
 .methods {
@@ -66,4 +66,15 @@
 .methodsItem:hover {
   -webkit-filter: brightness(30%);
   filter: brightness(85%);
+}
+
+.other {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  margin: 5px 0 27px;
+}
+
+.other span{
+
 }

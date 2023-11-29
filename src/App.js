@@ -3,9 +3,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { ToastContainer } from 'react-toastify';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import Routers from './Routers/Routers';
 import store from 'store';
+import { useEffect } from 'react';
 
 const toastifyContainerConfig = {
   position: 'top-right',
@@ -20,7 +21,12 @@ const toastifyContainerConfig = {
   theme: 'light',
 };
 
+
+
 function App() {
+
+
+
   return (
     <Provider store={store}>
       <Routers />
