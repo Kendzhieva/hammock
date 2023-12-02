@@ -8,6 +8,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { authLogOut } from 'store/features/authSlise';
+import { IoLogOutOutline, IoLogInOutline } from "react-icons/io5";
 
 const Header = () => {
 
@@ -66,21 +67,28 @@ const Header = () => {
             </div>
             <nav className={styles.handlers}>
               {user ?
-                <span className={styles.handlersLink} onClick={() => {
-                  dispatch(authLogOut())
-                  navigate('/')
-                }}>
-                  <AiOutlineUser size='22' />
-                  <p>выход</p>
-                </span>
+                <>
+                  <span className={styles.handlersLink} onClick={() => {
+                    dispatch(authLogOut())
+                    navigate('/')
+                  }}>
+                    <IoLogOutOutline size='22' />
+                    <p>Выход</p>
+                  </span>
+
+                  <Link to='/profile' className={styles.handlersLink}>
+                    <AiOutlineUser size='22' />
+                    <p>Личный кабинет</p>
+                  </Link>
+                </>
                 :
-                <Link to="auth/login">Войти</Link>
+                <Link className={styles.handlersLink} to="auth/login">
+                  <IoLogInOutline size={'22px'} />
+                  <p >Вход</p>
+                </Link>
               }
 
-              <Link to='/profile' className={styles.handlersLink}>
-                <AiOutlineUser size='22' />
-                <p>Личный кабинет</p>
-              </Link>
+
               <Link to='/cart' className={styles.handlersLink}>
                 <AiOutlineShoppingCart size='22' />
                 <p>Корзина</p>

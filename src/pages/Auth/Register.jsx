@@ -42,18 +42,8 @@ const Register = () => {
   function registerFormSubmit(data) {
     const { confirmPassword, ...other } = data
     dispatch(authRegister(other))
+      .then(() => toast.info('Hа вашу посту отправлено сообщение'))
   }
-
-  useEffect(() => {
-    const arrayOfErrors = Object.values(errors);
-    if (arrayOfErrors.length) {
-      const message = arrayOfErrors.reduce((acc, rec) => {
-        return (acc += `${rec.message}\n`);
-      }, '');
-
-      toast.error(message);
-    }
-  }, [errors]);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(registerFormSubmit)}>
@@ -87,7 +77,7 @@ const Register = () => {
         />
       </div>
       <Button className={styles.button}>Зарегестрировать</Button>
-      <p className={styles.other}>есть аккаунта, попробуй <Link to="/auth/login">Войти</Link></p>
+      <p className={styles.other}>есть аккаунта, попробуй <span><Link to="/auth/login">Войти</Link></span></p>
     </form>
   );
 };

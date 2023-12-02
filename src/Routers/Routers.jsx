@@ -5,10 +5,12 @@ import Register from 'pages/Auth/Register';
 
 import Blog from 'pages/Blog';
 import Catalog from 'pages/Catalog';
+import CreateProduct from 'pages/CreateProduct';
 import Delivery from 'pages/Delivery';
 import Detail from 'pages/Detail';
 import Home from 'pages/Home';
 import Post from 'pages/Post';
+import Profile from 'pages/Profile';
 import Sales from 'pages/Sales';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
@@ -24,6 +26,8 @@ const Routers = () => {
           <Route path='delivery' element={<Delivery />} />
           <Route path='blog' element={<Blog />} />
           <Route path='blog/:postId' element={<Post />} />
+          <Route path='profile' element={<Profile />} />
+          <Route path='create-product' element={<CreateProduct />} />
         </Route>
         <Route path='/auth' element={<AuthLayout />}>
           <Route path='login' element={<Login />} />

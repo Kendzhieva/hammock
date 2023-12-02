@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import getAccessToken from 'utils/getAccessToken';
 
 export const authRegister = createAsyncThunk(
     'auth/register',
@@ -34,12 +35,34 @@ export const authLogin = createAsyncThunk(
     }
 );
 
+export const editUser = createAsyncThunk(
+    'auth/edit',
+    async (data, { rejectWithValue }) => {
+        try {
+
+            const token = getAccessToken()
+
+            const response = await axios.patch(
+                `http://localhost:4430/users`, data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                }
+            })
+
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response.data || error.message);
+        }
+    }
+);
+
+
+
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        user: localStorage.getItem('user')
-            ? JSON.parse(localStorage.getItem('user'))
-            : null,
+        user: null,
         status: 'idle',
         error: null,
     },
@@ -70,6 +93,20 @@ const authSlice = createSlice({
             state.error = null;
         });
         builder.addCase(authLogin.rejected, (state, action) => {
+            state.status = 'error';
+            state.error = action.payload || null;
+        });
+
+        builder.addCase(editUser.pending, (state, action) => {
+            state.status = 'Loading';
+            state.error = null;
+        });
+        builder.addCase(editUser.fulfilled, (state, action) => {
+            state.user = { ...state.user, ...action.payload };
+            state.status = 'success';
+            state.error = null;
+        });
+        builder.addCase(editUser.rejected, (state, action) => {
             state.status = 'error';
             state.error = action.payload || null;
         });

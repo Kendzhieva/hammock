@@ -51,7 +51,7 @@ const Login = () => {
         />
       </div>
       <Button className={styles.button}>Войти</Button>
-      <p className={styles.other}>нет аккаунта, попробуй <Link to="/auth/register">Зарегистрироваться</Link></p>
+      <p className={styles.other}>нет аккаунта, попробуй <span><Link to="/auth/register">Зарегистрироваться</Link></span></p>
     </form>
   );
 };

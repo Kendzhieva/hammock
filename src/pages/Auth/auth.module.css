@@ -76,5 +76,10 @@
 }
 
 .other span{
+  color: #2d7033;
+  font-weight: 500;
+}
 
+.other span:hover{
+  text-decoration: underline;
 }
