@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './profileForm.module.css'
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeAvatar, editUser } from 'store/features/authSlise';
 
 //icons
-import { CiEdit } from "react-icons/ci";
+import { MdEdit } from "react-icons/md";
 import { FaRegCircleCheck } from "react-icons/fa6";
-import { useDispatch, useSelector } from 'react-redux';
-import { editUser } from 'store/features/authSlise';
-import { toast } from 'react-toastify';
 
 function ProfileForm() {
 
   const dispatch = useDispatch()
   const { user } = useSelector(state => state.authSlice)
+
+  const [avatar, setAvatar] = useState(null)
+
+  const handleChangeAvatar = (e) => {
+    const blobUrl = e.target.files[0]
+    dispatch(changeAvatar(blobUrl))
+      .unwrap()
+      .then((data) => toast.success(data.message))
+      .catch((error) => toast.error(error.message))
+  }
 
   const handleEditUser = (e) => {
     e.preventDefault()
@@ -29,11 +39,13 @@ function ProfileForm() {
       <div className='container'>
         <div className={styles.content}>
           <div className={styles.top}>
-            <img
-              className={styles.avatar}
-              src='https://bogatyr.club/uploads/posts/2023-03/1679580679_bogatyr-club-p-stich-na-chernom-fone-vkontakte-27.jpg'
-              alt='AVATAR'
-            />
+            <label className={styles.avatar}>
+              <input type='file' accept='img/*' onChange={handleChangeAvatar} />
+              <img
+                src={user.avatar}
+                alt='AVATAR'
+              />
+            </label>
           </div>
           <form className={styles.bottom} onSubmit={handleEditUser}>
             <p className={styles.name}>{user.fullName}</p>
@@ -45,6 +57,7 @@ function ProfileForm() {
                 placeholder='01010101@gmail.com'
                 name='email'
               />
+              <MdEdit size={'50px'} />
             </p>
 
             <p className={styles.info}>
@@ -55,6 +68,7 @@ function ProfileForm() {
                 name='phone'
                 defaultValue={user.phone}
               />
+              <MdEdit size={'50px'} />
             </p>
 
             <button className={styles.button} type='submit'>сохранить</button>

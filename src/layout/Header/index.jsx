@@ -89,7 +89,7 @@ const Header = () => {
               }
 
 
-              <Link to='/cart' className={styles.handlersLink}>
+              <Link to='/card' className={styles.handlersLink}>
                 <AiOutlineShoppingCart size='22' />
                 <p>Корзина</p>
               </Link>

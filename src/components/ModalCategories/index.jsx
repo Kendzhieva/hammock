@@ -1,10 +1,13 @@
 import Modal from 'components/Modal';
 import styles from './modalCategories.module.css';
-import { CiEdit, CiTrash, CiCircleCheck } from "react-icons/ci";
 import { useDispatch } from 'react-redux';
 import { deleteCategory, editCategories } from 'store/features/categoriesSlice';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
+
+//icon
+import { FaRegCircleCheck } from "react-icons/fa6";
+import { MdDelete, MdEdit } from "react-icons/md";
 
 
 function ModalCategories({ isOpen, setIsOpen, categories }) {
@@ -62,14 +65,14 @@ function ModalCategories({ isOpen, setIsOpen, categories }) {
                 {editableCategory === category.id ?
                   <>
                     <td><input onChange={(e) => setEditableCategoryValue(e.target.value)} defaultValue={editableCategoryValue} /></td>
-                    <td><CiCircleCheck onClick={handleEditCategory} /></td>
+                    <td><FaRegCircleCheck onClick={handleEditCategory} /></td>
                   </> : <>
                     <td>{category.name}</td>
-                    <td><CiEdit onClick={() => setEdit(category.id, category.name)} /></td>
+                    <td><MdEdit onClick={() => setEdit(category.id, category.name)} /></td>
                   </>
                 }
 
-                <td><CiTrash onClick={() => handleRemoveCategory(category.id)} /></td>
+                <td><MdDelete onClick={() => handleRemoveCategory(category.id)} /></td>
               </tr>
             )
           })}

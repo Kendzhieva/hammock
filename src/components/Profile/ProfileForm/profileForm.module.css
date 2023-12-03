@@ -5,10 +5,22 @@
   gap: 56px;
 }
 
-.avatar{
-    border-radius: 100px;
-    width: 212px;
-    height: 212px;
+.avatar {
+  border-radius: 100px;
+  width: 212px;
+  height: 212px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.avatar img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar input{
+  display: none;
 }
 
 .name{
@@ -23,7 +35,6 @@
   white-space: nowrap;
   align-items: center;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-  padding: 6px;
 }
 
 .text{

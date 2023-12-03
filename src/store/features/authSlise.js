@@ -35,6 +35,28 @@ export const authLogin = createAsyncThunk(
     }
 );
 
+export const getUserInfo = createAsyncThunk(
+    'auth/get-user-info',
+    async (_, { rejectWithValue }) => {
+        try {
+
+            const token = getAccessToken()
+
+            const response = await axios.get(
+                'http://localhost:4430/users/user-info', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            console.log(response.data);
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response.data || error.message);
+        }
+    }
+);
+
 export const editUser = createAsyncThunk(
     'auth/edit',
     async (data, { rejectWithValue }) => {
@@ -57,6 +79,30 @@ export const editUser = createAsyncThunk(
     }
 );
 
+export const changeAvatar = createAsyncThunk(
+    'auth/change-avatar',
+    async (blobUrl, { rejectWithValue }) => {
+        try {
+
+            const formData = new FormData()
+            formData.append('avatar', blobUrl)
+
+            const token = getAccessToken()
+
+            const response = await axios.post(
+                `http://localhost:4430/users/upload-avatar`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}`
+                }
+            })
+
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response.data || error.message);
+        }
+    }
+);
 
 
 const authSlice = createSlice({
@@ -109,6 +155,26 @@ const authSlice = createSlice({
         builder.addCase(editUser.rejected, (state, action) => {
             state.status = 'error';
             state.error = action.payload || null;
+        });
+
+        builder.addCase(changeAvatar.pending, (state, action) => {
+            state.status = 'Loading';
+            state.error = null;
+        });
+        builder.addCase(changeAvatar.fulfilled, (state, action) => {
+            state.user.avatar = action.payload?.avatarPath;
+            state.status = 'success';
+            state.error = null;
+        });
+        builder.addCase(changeAvatar.rejected, (state, action) => {
+            state.status = 'error';
+            state.error = action.payload || null;
+        });
+
+        builder.addCase(getUserInfo.fulfilled, (state, action) => {
+            state.user = { ...state.user, ...action.payload };
+            state.status = 'success';
+            state.error = null;
         });
     },
 });

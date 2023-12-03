@@ -14,7 +14,7 @@ function CreateProduct() {
   const [activeCategories, setActiveCategories] = useState('')
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState(categories);
-  const [isOpenModal, setIsOpenModal] = useState(true)
+  const [isOpenModal, setIsOpenModal] = useState(false)
 
   useEffect(() => {
     dispatch(getCategories())
@@ -36,22 +36,37 @@ function CreateProduct() {
 
 
   return (
-    <div>
-      <h2>Создание продукта</h2>
-      <h3>Выбрать котегорию</h3>
-      <CreatableSelect
-        isClearable
-        isDisabled={isLoading}
-        isLoading={isLoading}
-        onChange={(newValue) => setActiveCategories(newValue)}
-        onCreateOption={handleCreate}
-        options={options && options.map((item) => {
-          return { value: item.name, label: item.name }
-        })}
-        value={activeCategories}
-      />
-      <button onClick={() => setIsOpenModal(true)}>редактировать категории</button>
-      <ModalCategories isOpen={isOpenModal} setIsOpen={setIsOpenModal} categories={categories} />
+    <div className={styles.create_product}>
+      <div className='container'>
+        <h2 className={styles.title}>Создание продукта</h2>
+        <div className={styles.content}>
+          <div className={styles.category}>
+            <CreatableSelect
+              className={styles.select}
+              placeholder="Выбрать котегорию"
+              isClearable
+              isDisabled={isLoading}
+              isLoading={isLoading}
+              onChange={(newValue) => setActiveCategories(newValue)}
+              onCreateOption={handleCreate}
+              options={options && options.map((item) => {
+                return { value: item.name, label: item.name }
+              })}
+              value={activeCategories}
+            />
+            <button className={styles.button} onClick={() => setIsOpenModal(true)}>редактировать категории</button>
+            <ModalCategories isOpen={isOpenModal} setIsOpen={setIsOpenModal} categories={categories} />
+          </div>
+
+          {/* <input
+            className={styles.input}
+            placeholder='Название'
+            name='name'
+          /> */}
+        </div>
+
+
+      </div>
     </div>
   );
 }
