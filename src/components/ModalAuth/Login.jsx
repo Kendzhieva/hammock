@@ -1,4 +1,4 @@
-import styles from './auth.module.css';
+import styles from './modalAuth.module.css';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import Button from 'components/Button';
@@ -6,8 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 import { authLogin } from 'store/features/authSlise';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const Login = () => {
+const Login = ({ setAuthType }) => {
 
   const dispatch = useDispatch()
 
@@ -25,6 +26,9 @@ const Login = () => {
   function loginFormSubmit(data) {
     const { confirmPassword, ...other } = data
     dispatch(authLogin(other))
+      .unwrap()
+      .then(() => toast.success('вы успешно вошли'))
+      .catch((error) => toast.error(error.message))
   }
 
   return (
@@ -51,7 +55,7 @@ const Login = () => {
         />
       </div>
       <Button className={styles.button}>Войти</Button>
-      <p className={styles.other}>нет аккаунта, попробуй <span><Link to="/auth/register">Зарегистрироваться</Link></span></p>
+      <p className={styles.other}>нет аккаунта, попробуй <span><Link to="/" onClick={() => setAuthType('register')}>Зарегистрироваться</Link></span></p>
     </form>
   );
 };

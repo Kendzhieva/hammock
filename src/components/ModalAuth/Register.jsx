@@ -1,4 +1,4 @@
-import styles from './auth.module.css';
+import styles from './modalAuth.module.css';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { authRegister } from 'store/features/authSlise';
 import { Link } from 'react-router-dom';
 
-const Register = () => {
+const Register = ({ setAuthType }) => {
 
   const dispatch = useDispatch()
   const registerSchema = yup.object().shape({
@@ -42,7 +42,10 @@ const Register = () => {
   function registerFormSubmit(data) {
     const { confirmPassword, ...other } = data
     dispatch(authRegister(other))
+      .unwrap()
       .then(() => toast.info('Hа вашу посту отправлено сообщение'))
+      .then((data) => toast.success(data.message))
+      .catch((error) => toast.error(error.message))
   }
 
   return (
@@ -77,8 +80,8 @@ const Register = () => {
         />
       </div>
       <Button className={styles.button}>Зарегестрировать</Button>
-      <p className={styles.other}>есть аккаунта, попробуй <span><Link to="/auth/login">Войти</Link></span></p>
-    </form>
+      <p className={styles.other}>есть аккаунта, попробуй <span><Link to="/" onClick={() => setAuthType('login')}> Войти</Link></span></p>
+    </form >
   );
 };
 

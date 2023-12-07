@@ -1,0 +1,51 @@
+.good {    
+    display: flex;
+    width: 270px;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 22px;
+}
+
+.info {
+    display: grid;
+    gap: 6px;
+    word-break: break-all;
+    background-color: #fff;
+    padding: 27px 26px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 9px 18px 7px rgba(0, 0, 0, 0.17);
+}
+
+.img{
+    width: 219px;
+    height: 149px;
+}
+
+.name{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.text{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.price{
+    text-align: right;
+    color: #36873E;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.button_delete{
+    
+    background-color: #FFF;
+    box-shadow: 0px 9px 18px 7px rgba(0, 0, 0, 0.17);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}

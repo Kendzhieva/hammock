@@ -1,7 +1,4 @@
 import MainLayout from 'layout/MainLayout';
-import AuthLayout from 'pages/Auth';
-import Login from 'pages/Auth/Login';
-import Register from 'pages/Auth/Register';
 
 import Blog from 'pages/Blog';
 import Card from 'pages/Card';
@@ -40,10 +37,6 @@ const Routers = () => {
           <Route path='profile' element={<Profile />} />
           <Route path='create-product' element={<CreateProduct />} />
           <Route path='card' element={<Card />} />
-        </Route>
-        <Route path='/auth' element={<AuthLayout />}>
-          <Route path='login' element={<Login />} />
-          <Route path='register' element={<Register />} />
         </Route>
       </Routes>
     </BrowserRouter>

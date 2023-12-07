@@ -1,15 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import instance from 'configs/instance';
 import getAccessToken from 'utils/getAccessToken';
 
 export const authRegister = createAsyncThunk(
     'auth/register',
     async (data, { rejectWithValue }) => {
         try {
-            const response = await axios.post(
-                'http://localhost:4430/auth/register', data, {
-                headers: { 'Content-Type': 'application/json' }
-            })
+            const response = await instance.post('auth/register', data)
             console.log(response.data);
             return response.data;
         } catch (error) {
@@ -23,10 +21,7 @@ export const authLogin = createAsyncThunk(
     async (data, { rejectWithValue }) => {
         try {
 
-            const response = await axios.post(
-                'http://localhost:4430/auth/login', data, {
-                headers: { 'Content-Type': 'application/json' }
-            })
+            const response = await instance.post('auth/login', data)
 
             return response.data;
         } catch (error) {
@@ -42,13 +37,10 @@ export const getUserInfo = createAsyncThunk(
 
             const token = getAccessToken()
 
-            const response = await axios.get(
-                'http://localhost:4430/users/user-info', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
-                }
+            const response = await instance.post('users/user-info', {
+                headers: { Authorization: `Bearer ${token}` }
             })
+
             console.log(response.data);
             return response.data;
         } catch (error) {
@@ -64,13 +56,10 @@ export const editUser = createAsyncThunk(
 
             const token = getAccessToken()
 
-            const response = await axios.patch(
-                `http://localhost:4430/users`, data, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
-                }
+            const response = await instance.patch('users', data, {
+                headers: { Authorization: `Bearer ${token}` }
             })
+
 
             return response.data;
         } catch (error) {
@@ -93,7 +82,7 @@ export const changeAvatar = createAsyncThunk(
                 `http://localhost:4430/users/upload-avatar`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    Authorization: `Bearer ${token}`
+                    headers: { Authorization: `Bearer ${token}` }
                 }
             })
 

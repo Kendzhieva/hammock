@@ -48,31 +48,31 @@ function ModalCategories({ isOpen, setIsOpen, categories }) {
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <h2 className={styles.title}>Категории</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Название</th>
-            <th>редлктировать</th>
-            <th>удалить</th>
+      <table className={styles.content}>
+        <thead className={styles.header}>
+          <tr className={styles.list}>
+            <th className={styles.item}>ID</th>
+            <th className={styles.item}>Название</th>
+            <th className={styles.item}></th>
+            <th className={styles.item}></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={styles.body}>
           {categories && categories.map((category) => {
             return (
-              <tr>
-                <td>{category.id}</td>
+              <tr >
+                <td className={styles.item}>{category.id}</td>
                 {editableCategory === category.id ?
                   <>
-                    <td><input onChange={(e) => setEditableCategoryValue(e.target.value)} defaultValue={editableCategoryValue} /></td>
-                    <td><FaRegCircleCheck onClick={handleEditCategory} /></td>
+                    <td className={styles.item}><input onChange={(e) => setEditableCategoryValue(e.target.value)} defaultValue={editableCategoryValue} /></td>
+                    <td className={styles.item}><FaRegCircleCheck onClick={handleEditCategory} /></td>
                   </> : <>
-                    <td>{category.name}</td>
-                    <td><MdEdit onClick={() => setEdit(category.id, category.name)} /></td>
+                    <td className={styles.item}>{category.name}</td>
+                    <td className={styles.item}><MdEdit onClick={() => setEdit(category.id, category.name)} /></td>
                   </>
                 }
 
-                <td><MdDelete onClick={() => handleRemoveCategory(category.id)} /></td>
+                <td className={styles.item}><MdDelete color='#dd3b3b' onClick={() => handleRemoveCategory(category.id)} /></td>
               </tr>
             )
           })}

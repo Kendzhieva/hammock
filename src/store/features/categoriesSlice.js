@@ -1,14 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import instance from 'configs/instance';
 import getAccessToken from 'utils/getAccessToken';
 
 export const getCategories = createAsyncThunk(
     'categories/get',
     async (data, { rejectWithValue }) => {
         try {
-            const response = await axios.get(
-                'http://localhost:4430/categories')
-            console.log(response.data);
+
+            const response = await instance.get('categories')
+
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data || error.message);
@@ -22,13 +23,11 @@ export const createCategories = createAsyncThunk(
     async (data, { rejectWithValue }) => {
         try {
             const token = getAccessToken()
-            const response = await axios.post(
-                'http://localhost:4430/categories', data, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
-                }
+
+            const response = await instance.post('categories', data, {
+                headers: { Authorization: `Bearer ${token}` }
             })
+
             console.log(response.data);
             return response.data;
         } catch (error) {
@@ -42,13 +41,11 @@ export const editCategories = createAsyncThunk(
     async ({ name, id }, { rejectWithValue }) => {
         try {
             const token = getAccessToken()
-            const response = await axios.patch(
-                `http://localhost:4430/categories/${id}`, { name }, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
-                }
+
+            const response = await instance.patch(`categories/${id}`, { name }, {
+                headers: { Authorization: `Bearer ${token}` }
             })
+
             console.log(response.data);
             return response.data;
         } catch (error) {
@@ -63,13 +60,11 @@ export const deleteCategory = createAsyncThunk(
     async (id, { rejectWithValue }) => {
         try {
             const token = getAccessToken()
-            const response = await axios.delete(
-                `http://localhost:4430/categories/${id}`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
-                }
+
+            const response = await instance.delete(`categories/${id}`, {
+                headers: { Authorization: `Bearer ${token}` }
             })
+
             console.log(response.data);
             return id;
         } catch (error) {

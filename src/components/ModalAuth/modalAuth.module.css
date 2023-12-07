@@ -1,0 +1,86 @@
+.content {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+  
+  .form {
+    min-width: 370px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .title {
+    text-align: center;
+    color: #000;
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 24px;
+  }
+  
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .input {
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+  
+  .input:invalid {
+    border-color: rgba(255, 0, 0, 0.3);
+    color: rgba(255, 0, 0, 0.5);
+  }
+  
+  .button {
+    margin: 40px 0 0;
+  }
+  
+  .methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .methodsTitle {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+  }
+  
+  .methodsWrapper {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+  }
+  
+  .methodsItem {
+    cursor: pointer;
+  }
+  
+  .methodsItem:hover {
+    -webkit-filter: brightness(30%);
+    filter: brightness(85%);
+  }
+  
+  .other {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+    margin: 5px 0 27px;
+  }
+  
+  .other span{
+    color: #2d7033;
+    font-weight: 500;
+  }
+  
+  .other span:hover{
+    text-decoration: underline;
+  }
+  
