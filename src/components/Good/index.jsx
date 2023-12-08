@@ -1,5 +1,4 @@
 import styles from './good.module.css';
-
 import { CgClose } from "react-icons/cg";
 
 const Good = ({ imgUrl, name, text, price, remove, }) => (
@@ -14,7 +13,7 @@ const Good = ({ imgUrl, name, text, price, remove, }) => (
       <p className={styles.text}>{text}</p>
       <p className={styles.price}>{price} руб</p>
     </div>
-    {remove = "true" ? <button className={styles.button_delete}><CgClose size={'15px'} /></button> : <></>}
+    {remove ? <button className={styles.button_delete}><CgClose size={'15px'} /></button> : <></>}
   </div>
 );
 

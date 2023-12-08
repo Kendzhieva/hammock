@@ -1,0 +1,20 @@
+.active_link{
+    transition: 0s;
+    color: #36873E;
+    font-size: 16px;
+    font-weight: 400;
+    border-bottom: 2px solid #36873E;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 34px;
+}
+
+.link {
+    transition: 0s;
+    color: #717171;
+    font-size: 16px;
+    font-weight: 400;
+}

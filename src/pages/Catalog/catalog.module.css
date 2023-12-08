@@ -1,0 +1,10 @@
+.catalog{
+    padding: 35px 0 120px;
+}
+.title{
+    text-align: center;
+    color: #000;
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 30px;
+}

@@ -1,0 +1,14 @@
+.title{
+    margin: 50px 0 30px;
+    color: #717171;
+    font-size: 28px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.products {
+  display: grid;
+  column-gap: 30px;
+  row-gap: 81px;
+  grid-template-columns: repeat(4, 270px);
+}
