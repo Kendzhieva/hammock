@@ -1,0 +1,44 @@
+.productInfo {
+    margin: 100px 0 87px;
+    display: flex;
+    gap: 30px;
+}
+
+.img {
+    width: 543px;
+    height: 445px;
+    object-fit: cover;
+}
+
+.title{
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 11px;
+}
+
+.price {
+    color: #36873E;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.podTitle {
+    margin: 12px 0 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.text{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.button {
+    margin-top: 21px;
+    background: #36873E;
+    padding: 14px 24px;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+}

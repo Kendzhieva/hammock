@@ -8,6 +8,7 @@ import Delivery from 'pages/Delivery';
 import Detail from 'pages/Detail';
 import Home from 'pages/Home';
 import Post from 'pages/Post';
+import ProductCard from 'pages/ProductCard';
 import Profile from 'pages/Profile';
 import Sales from 'pages/Sales';
 import { useEffect } from 'react';
@@ -37,6 +38,7 @@ const Routers = () => {
           <Route path='profile' element={<Profile />} />
           <Route path='create-product' element={<CreateProduct />} />
           <Route path='card' element={<Card />} />
+          <Route path='product-card' element={<ProductCard />} />
         </Route>
       </Routes>
     </BrowserRouter>
