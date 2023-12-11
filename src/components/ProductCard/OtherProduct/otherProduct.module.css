@@ -1,0 +1,12 @@
+.title{
+    text-align: center;
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.goods {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4,  270px);
+    gap: 40px;
+}
