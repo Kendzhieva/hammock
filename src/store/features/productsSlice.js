@@ -1,15 +1,26 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { instance, instanceWithToken } from 'configs/instance';
 
-export const authRegister = createAsyncThunk(
-    'auth/register',
+export const createProduct = createAsyncThunk(
+    'product/create',
     async (data, { rejectWithValue }) => {
         try {
-            const response = await axios.post(
-                'http://localhost:4430/auth/register', data, {
-                headers: { 'Content-Type': 'application/json' }
-            })
-            console.log(response.data);
+            const response = await instanceWithToken.post(
+                'products', data)
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error.response.data || error.message);
+        }
+    }
+);
+
+export const getAllProduct = createAsyncThunk(
+    'product/get-all',
+    async ({ rejectWithValue }) => {
+        try {
+            const response = await instance.get(
+                'products')
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data || error.message);
@@ -22,7 +33,7 @@ export const authRegister = createAsyncThunk(
 const ProductsSlice = createSlice({
     name: 'product',
     initialState: {
-        products: {},
+        products: [],
         status: 'idle',
         error: null,
     },
@@ -33,16 +44,30 @@ const ProductsSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(authRegister.pending, (state, action) => {
+        builder.addCase(createProduct.pending, (state, action) => {
             state.status = 'Loading';
             state.error = null;
         });
-        builder.addCase(authRegister.fulfilled, (state, action) => {
-            state.user = action.payload;
+        builder.addCase(createProduct.fulfilled, (state, action) => {
+            state.products = [...state.products, action.payload];
             state.status = 'success';
             state.error = null;
         });
-        builder.addCase(authRegister.rejected, (state, action) => {
+        builder.addCase(createProduct.rejected, (state, action) => {
+            state.status = 'error';
+            state.error = action.payload || null;
+        });
+
+        builder.addCase(getAllProduct.pending, (state, action) => {
+            state.status = 'Loading';
+            state.error = null;
+        });
+        builder.addCase(getAllProduct.fulfilled, (state, action) => {
+            state.products = action.payload;
+            state.status = 'success';
+            state.error = null;
+        });
+        builder.addCase(getAllProduct.rejected, (state, action) => {
             state.status = 'error';
             state.error = action.payload || null;
         });
