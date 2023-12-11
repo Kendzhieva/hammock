@@ -1,9 +1,18 @@
 import axios from 'axios'
-const instance = axios.create({
+import getAccessToken from 'utils/getAccessToken'
+
+const token = getAccessToken()
+
+export const instance = axios.create({
     baseURL: "http://localhost:4430/",
     headers: {
         'Content-Type': 'application/json'
     }
 })
 
-export default instance
+export const instanceWithToken = instance.create({
+    headers: {
+        "Authorization": `Bearer ${token}`
+    }
+})
+

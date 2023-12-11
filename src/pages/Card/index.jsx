@@ -27,7 +27,7 @@ function Card() {
               name="Гамак “Красный бархат”"
               text='Описание гамака, основные параметры, материал'
               price='4 000'
-              remove={true}
+              isRemove={true}
             />
 
             <Good
@@ -35,7 +35,7 @@ function Card() {
               name="Гамак “Красный бархат”"
               text='Описание гамака, основные параметры, материал'
               price='4 000'
-              remove={true}
+              isRemove={true}
             />
 
             <Good
@@ -43,7 +43,7 @@ function Card() {
               name="Гамак “Красный бархат”"
               text='Описание гамака, основные параметры, материал'
               price='4 000'
-              remove={true}
+              isRemove={true}
             />
 
             <Good
@@ -51,7 +51,7 @@ function Card() {
               name="Гамак “Красный бархат”"
               text='Описание гамака, основные параметры, материал'
               price='4 000'
-              remove={true}
+              isRemove={true}
             />
           </div>
 

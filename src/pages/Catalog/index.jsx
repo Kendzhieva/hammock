@@ -36,7 +36,7 @@ const Catalog = () => {
       <div className="container">
         <h2 className={styles.title}>Каталог</h2>
         <ProductCategoriesList />
-        <CatalogBlock category={'Гамаки'} products={products} />
+        <CatalogBlock title={'Гамаки'} products={products} />
         <TrendMonth />
       </div>
     </div>

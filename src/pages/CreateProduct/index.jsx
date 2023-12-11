@@ -14,7 +14,7 @@ function CreateProduct() {
   const [activeCategories, setActiveCategories] = useState('')
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState(categories);
-  const [isOpenModal, setIsOpenModal] = useState(true)
+  const [isOpenModal, setIsOpenModal] = useState(false)
 
   useEffect(() => {
     dispatch(getCategories())

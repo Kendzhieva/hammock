@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import getAccessToken from 'utils/getAccessToken';
 
 export const authRegister = createAsyncThunk(
     'auth/register',

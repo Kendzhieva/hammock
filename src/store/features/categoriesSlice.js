@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-import instance from 'configs/instance';
-import getAccessToken from 'utils/getAccessToken';
+import { instance, instanceWithToken } from 'configs/instance';
 
 export const getCategories = createAsyncThunk(
     'categories/get',
@@ -22,11 +20,8 @@ export const createCategories = createAsyncThunk(
     'categories/create',
     async (data, { rejectWithValue }) => {
         try {
-            const token = getAccessToken()
 
-            const response = await instance.post('categories', data, {
-                headers: { Authorization: `Bearer ${token}` }
-            })
+            const response = await instanceWithToken.post('categories', data)
 
             console.log(response.data);
             return response.data;
@@ -40,11 +35,8 @@ export const editCategories = createAsyncThunk(
     'categories/edit',
     async ({ name, id }, { rejectWithValue }) => {
         try {
-            const token = getAccessToken()
 
-            const response = await instance.patch(`categories/${id}`, { name }, {
-                headers: { Authorization: `Bearer ${token}` }
-            })
+            const response = await instanceWithToken.patch(`categories/${id}`, { name })
 
             console.log(response.data);
             return response.data;
@@ -59,11 +51,8 @@ export const deleteCategory = createAsyncThunk(
     'categories/delete',
     async (id, { rejectWithValue }) => {
         try {
-            const token = getAccessToken()
 
-            const response = await instance.delete(`categories/${id}`, {
-                headers: { Authorization: `Bearer ${token}` }
-            })
+            const response = await instanceWithToken.delete(`categories/${id}`)
 
             console.log(response.data);
             return id;

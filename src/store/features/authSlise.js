@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-import instance from 'configs/instance';
-import getAccessToken from 'utils/getAccessToken';
+import { instance, instanceWithToken } from 'configs/instance';
 
 export const authRegister = createAsyncThunk(
     'auth/register',
@@ -35,11 +33,7 @@ export const getUserInfo = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
 
-            const token = getAccessToken()
-
-            const response = await instance.post('users/user-info', {
-                headers: { Authorization: `Bearer ${token}` }
-            })
+            const response = await instanceWithToken.post('users/user-info')
 
             console.log(response.data);
             return response.data;
@@ -54,11 +48,7 @@ export const editUser = createAsyncThunk(
     async (data, { rejectWithValue }) => {
         try {
 
-            const token = getAccessToken()
-
-            const response = await instance.patch('users', data, {
-                headers: { Authorization: `Bearer ${token}` }
-            })
+            const response = await instanceWithToken.patch('users', data)
 
 
             return response.data;
@@ -76,13 +66,11 @@ export const changeAvatar = createAsyncThunk(
             const formData = new FormData()
             formData.append('avatar', blobUrl)
 
-            const token = getAccessToken()
 
-            const response = await axios.post(
+            const response = await instanceWithToken.post(
                 `http://localhost:4430/users/upload-avatar`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    headers: { Authorization: `Bearer ${token}` }
                 }
             })
 
