@@ -1,0 +1,18 @@
+.blog {
+  margin: 35px 0 133px;
+}
+
+.title{
+    text-align: center;
+    font-size: 36px;
+    font-weight: 900;
+    padding-bottom: 9px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.20);
+    margin-bottom: 46px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 370px);
+  gap: 30px;
+}

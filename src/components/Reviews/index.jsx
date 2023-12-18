@@ -50,7 +50,7 @@ const Reviews = ({ isMobile = false }) => {
               <SwiperSlide className={styles.reviewCard}>
                 <img
                   className={styles.reviewIcon}
-                  src='https://s3-alpha-sig.figma.com/img/c2d0/ec52/03489ef9ce37ce4d546df1433d0dcf37?Expires=1701648000&Signature=Lunz3DF8IPwZsOpv2G0A1GDtbuFNq4O8powthzDJ2QDqbyMLtaepEX-6ACvVLsrzUXt7ijhT6pHmnVEFxRSxL80wMTmnZ9m14ISHHbuXk9OIM2d~dkMPbM96PtNGmKxkSpRm5rALWq~Jcivkhg5DogT6-qZLqtxqJIBA75nRqUoasPsHNsWUbfKXn14Ds0JBBGgIrHYRw2FiDzeXtu34rcSYPNsuYrP6eV0~swSYe69r43-BHSqRlOY13kbSQ2CPF6In8iTlEizCxjiVa1QgDI0CDa5XLw7Hq9NTU0t6jPHOYrwdK2WvGDB~5PhPEMN78UUzoNuRG~iKgCVsa3jOVw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'
+                  src='https://bogatyr.club/uploads/posts/2023-03/1679580679_bogatyr-club-p-stich-na-chernom-fone-vkontakte-27.jpg'
                   alt='AVATAR'
                 />
                 <p className={styles.reviewText}>
@@ -62,7 +62,7 @@ const Reviews = ({ isMobile = false }) => {
               <SwiperSlide className={styles.reviewCard}>
                 <img
                   className={styles.reviewIcon}
-                  src='https://s3-alpha-sig.figma.com/img/c2d0/ec52/03489ef9ce37ce4d546df1433d0dcf37?Expires=1701648000&Signature=Lunz3DF8IPwZsOpv2G0A1GDtbuFNq4O8powthzDJ2QDqbyMLtaepEX-6ACvVLsrzUXt7ijhT6pHmnVEFxRSxL80wMTmnZ9m14ISHHbuXk9OIM2d~dkMPbM96PtNGmKxkSpRm5rALWq~Jcivkhg5DogT6-qZLqtxqJIBA75nRqUoasPsHNsWUbfKXn14Ds0JBBGgIrHYRw2FiDzeXtu34rcSYPNsuYrP6eV0~swSYe69r43-BHSqRlOY13kbSQ2CPF6In8iTlEizCxjiVa1QgDI0CDa5XLw7Hq9NTU0t6jPHOYrwdK2WvGDB~5PhPEMN78UUzoNuRG~iKgCVsa3jOVw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'
+                  src='https://bogatyr.club/uploads/posts/2023-03/1679580679_bogatyr-club-p-stich-na-chernom-fone-vkontakte-27.jpg'
                   alt='AVATAR'
                 />
                 <p className={styles.reviewText}>
@@ -74,7 +74,7 @@ const Reviews = ({ isMobile = false }) => {
               <SwiperSlide className={styles.reviewCard}>
                 <img
                   className={styles.reviewIcon}
-                  src='https://s3-alpha-sig.figma.com/img/c2d0/ec52/03489ef9ce37ce4d546df1433d0dcf37?Expires=1701648000&Signature=Lunz3DF8IPwZsOpv2G0A1GDtbuFNq4O8powthzDJ2QDqbyMLtaepEX-6ACvVLsrzUXt7ijhT6pHmnVEFxRSxL80wMTmnZ9m14ISHHbuXk9OIM2d~dkMPbM96PtNGmKxkSpRm5rALWq~Jcivkhg5DogT6-qZLqtxqJIBA75nRqUoasPsHNsWUbfKXn14Ds0JBBGgIrHYRw2FiDzeXtu34rcSYPNsuYrP6eV0~swSYe69r43-BHSqRlOY13kbSQ2CPF6In8iTlEizCxjiVa1QgDI0CDa5XLw7Hq9NTU0t6jPHOYrwdK2WvGDB~5PhPEMN78UUzoNuRG~iKgCVsa3jOVw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'
+                  src='https://bogatyr.club/uploads/posts/2023-03/1679580679_bogatyr-club-p-stich-na-chernom-fone-vkontakte-27.jpg'
                   alt='AVATAR'
                 />
                 <p className={styles.reviewText}>

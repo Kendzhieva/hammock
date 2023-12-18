@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import Button from 'components/Button';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
-import { authLogin } from 'store/features/authSlise';
+import { authLogin } from 'store/features/authSlice';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 

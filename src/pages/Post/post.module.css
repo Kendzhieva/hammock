@@ -1,0 +1,29 @@
+.postCard{
+    padding: 35px 0 100px;
+}
+
+.title{
+    text-align: center;
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+
+.info{
+    display: flex;
+    gap: 30px;
+}
+
+.text{
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    width: 100%;
+    word-break: break-all;
+}
+
+.img{
+    object-fit: cover;
+    width: 370px;
+    height: 414px;
+}

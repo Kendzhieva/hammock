@@ -6,7 +6,7 @@ import Button from 'components/Button';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import { authRegister } from 'store/features/authSlise';
+import { authRegister } from 'store/features/authSlice';
 import { Link } from 'react-router-dom';
 
 const Register = ({ setAuthType }) => {

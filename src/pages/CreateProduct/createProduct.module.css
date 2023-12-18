@@ -3,8 +3,28 @@
 }
 
 .content {
-    display: grid;
+    display: flex;
     gap: 10px;
+    align-items: center;
+}
+
+.images {
+  border-radius: 100px;
+  width: 212px;
+  height: 212px;
+  overflow: hidden;
+  display: inline-block;
+  background-color: gainsboro;
+}
+
+.images img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.images input{
+  display: none;
 }
 
 .title {
@@ -22,42 +42,56 @@
 }
 
 .select {
-    width: 100%;
-    outline: none;
-    font-size: 16px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+  margin: 0 8px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 .button {
-    white-space: nowrap;
-    border-radius: 5px;
-    background: #36873e;
-    padding: 5px 18px;
-    color: #fff;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-  }
+  white-space: nowrap;
+  border-radius: 5px;
+  background: #36873e;
+  padding: 5px 18px;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
   
-  .button:hover {
-    background: #2d7033;
-  }
+.button:hover , .buttonAdd:hover {
+  background: #2d7033;
+}
 
-  .input {
-    width: 100%;
-    background-color: hsl(0, 0%, 100%);
-    border-color: hsl(0, 0%, 80%);
-    border-radius: 4px;
-    border-style: solid;
-    border-width: 1px;
-    box-sizing: border-box;
-    font-size: 16px;
-    padding: 7px 10px;
-    margin-left: 7.5px;
-  }
-  
+.buttonAdd {
+  margin: 10px 7px;
+  white-space: nowrap;
+  border-radius: 5px;
+  background: #36873e;
+  padding: 10px 18px;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.input {
+  width: 100%;
+  margin: 5px 0;
+  background-color: hsl(0, 0%, 100%);
+  border-color: hsl(0, 0%, 80%);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 7px 10px;
+  margin-left: 7.5px;
+}

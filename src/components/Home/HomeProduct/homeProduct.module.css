@@ -1,0 +1,23 @@
+.homeProduct {
+  margin-bottom: 160px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.down {
+  margin: 50px 0 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 270px);
+  gap: 30px;
+}
+
+.all{
+  display: flex;
+  align-items: center;
+  color: #2d7033;
+  font-weight: 500;
+  margin: 0 560px;
+}

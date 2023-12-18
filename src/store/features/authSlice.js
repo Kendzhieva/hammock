@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { instance, instanceWithToken } from 'configs/instance';
+import getAccessToken from 'utils/getAccessToken';
+import parsJWT from 'utils/parsJWT';
 
 export const authRegister = createAsyncThunk(
     'auth/register',
     async (data, { rejectWithValue }) => {
         try {
             const response = await instance.post('auth/register', data)
-            console.log(response.data);
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data || error.message);
@@ -33,11 +34,19 @@ export const getUserInfo = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
 
-            const response = await instanceWithToken.post('users/user-info')
+            const response = await instanceWithToken.get('users/user-info')
 
-            console.log(response.data);
             return response.data;
         } catch (error) {
+            if (error.response.status == '401') {
+                const token = getAccessToken()
+                const decodedToken = parsJWT(token)
+                const currentTime = Date.now()
+                if (decodedToken?.exp * 1000 < currentTime) {
+                    return rejectWithValue("endSession")
+                }
+
+            }
             return rejectWithValue(error.response.data || error.message);
         }
     }
@@ -152,6 +161,13 @@ const authSlice = createSlice({
             state.user = { ...state.user, ...action.payload };
             state.status = 'success';
             state.error = null;
+        });
+        builder.addCase(getUserInfo.rejected, (state, action) => {
+            state.status = 'error';
+            if (action.payload === "endSession") {
+                state.user = null
+            }
+            state.error = action.payload || null;
         });
     },
 });

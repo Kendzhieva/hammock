@@ -11,9 +11,9 @@ function CatalogBlock({ title, products }) {
             <Good
               imgUrl={product.img}
               name={product.name}
-              text={product.text}
+              text={product.description}
               price={product.price}
-              isPresent={true}
+              id={product.id}
             />
           )
         })}

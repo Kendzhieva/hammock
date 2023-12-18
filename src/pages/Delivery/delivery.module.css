@@ -1,0 +1,16 @@
+.delivery {
+  padding: 35px 0 100px;
+}
+
+.title{
+    text-align: center;
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 35px;
+}
+
+.info {
+  display: flex;
+  gap: 130px;
+  justify-content: center;
+}

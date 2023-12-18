@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createCategories, getCategories } from 'store/features/categoriesSlice';
 import CreatableSelect from 'react-select/creatable';
 import ModalCategories from 'components/ModalCategories';
-import { createProduct, getAllProduct } from 'store/features/productsSlice';
+import { createProduct, getAllProduct, productUploadImages } from 'store/features/productsSlice';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 
 function CreateProduct() {
@@ -17,6 +18,7 @@ function CreateProduct() {
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState(categories);
   const [isOpenModal, setIsOpenModal] = useState(false)
+  const [images, setImages] = useState([])
 
   useEffect(() => {
     dispatch(getCategories())
@@ -39,6 +41,7 @@ function CreateProduct() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -50,10 +53,28 @@ function CreateProduct() {
   }
 
   const handleCreateProduct = async (data) => {
-    console.log(findCategoryId()[0].id);
-    const fullData = { ...data, categoryId: findCategoryId()[0].id }
-    dispatch(createProduct(fullData))
+    const priceAsNumber = parseFloat(data.price);
+    const foundCategory = findCategoryId();
+    if (foundCategory.length > 0 && !isNaN(priceAsNumber)) {
+      const fullData = { ...data, categoryId: foundCategory[0].id, price: priceAsNumber };
+      dispatch(createProduct({ fullData, images }))
+        .unwrap()
+        .then(() => toast.success("продукт успешно добавлен"))
+        .catch((error) => toast.error(error))
+      reset()
+    } else {
+      toast.error("Категория не найдена");
+      toast.error("Цена должна быть числом")
+    }
+  };
+
+
+  const handelChangeUploadImage = (e) => {
+    const blobUrls = e.target.files
+    setImages(blobUrls)
+
   }
+
 
 
   return (
@@ -61,7 +82,20 @@ function CreateProduct() {
       <div className='container'>
         <h2 className={styles.title}>Создание продукта</h2>
         <div className={styles.content}>
-          <form onSubmit={handleSubmit(handleCreateProduct)}>
+          <label className={styles.images}>
+            <input type='file' multiple accept='img/*' onChange={handelChangeUploadImage} />
+
+            {[...images].map((img) => {
+              const url = URL.createObjectURL(img)
+              return (
+                <img
+                  src={url}
+                  alt={'product-img'}
+                />
+              )
+            })}
+          </label>
+          <div>
             <div className={styles.category}>
               <CreatableSelect
                 className={styles.select}
@@ -80,25 +114,28 @@ function CreateProduct() {
               <ModalCategories isOpen={isOpenModal} setIsOpen={setIsOpenModal} categories={categories} />
             </div>
 
-            <input
-              className={styles.input}
-              placeholder='Название'
-              {...register('name')}
-            />
-            <input
-              className={styles.input}
-              placeholder='Описание'
-              {...register('description')}
+            <form onSubmit={handleSubmit(handleCreateProduct)}>
+              <input
+                className={styles.input}
+                placeholder='Название'
+                {...register('name')}
+              />
+              <input
+                className={styles.input}
+                placeholder='Описание'
+                {...register('description')}
 
-            />
-            <input
-              className={styles.input}
-              placeholder='Цена'
-              {...register('price')}
+              />
+              <input
+                className={styles.input}
+                placeholder='Цена'
+                {...register('price')}
+              />
 
-            />
-            <button type='submit' className={styles.button}>Создать</button>
-          </form>
+
+              <button type='submit' className={styles.button}>Создать</button>
+            </form>
+          </div>
         </div>
 
 

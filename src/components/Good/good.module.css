@@ -11,8 +11,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 84px;
-  height: 84px;
+  width: 86px;
+  height: 86px;
 }
 
 .info {
@@ -57,4 +57,16 @@
     border-radius: 50%;
     display: grid;
     place-items: center;
+}
+
+.buttonsAdmin{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: end;
+}
+
+.buttonAdmin {
+  background-color: transparent;
+
 }

@@ -1,0 +1,63 @@
+.blogCard{
+    width: 370px;
+    height: 418px;
+    box-shadow: 0px 9px 18px 7px rgba(0, 0, 0, 0.13);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.img{
+    width: 370px;
+    height: 220px;
+    object-fit: cover;
+}
+
+.info{
+    padding: 19px 20px 15px;
+}
+
+.title{
+    word-break: break-all;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.text{
+    word-break: break-all;
+    margin: 21px 0 14px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px; /* 137.5% */
+}
+
+.button {
+    color: #36873E;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 7px 52px;
+    border-radius: 10px;
+    border: 1px solid #36873E;
+    background-color: #fff;
+}
+
+.button_delete{
+    
+    background-color: #FFF;
+    box-shadow: 0px 9px 18px 7px rgba(0, 0, 0, 0.17);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.buttonsAdmin{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.buttonAdmin {
+  background-color: transparent;
+
+}

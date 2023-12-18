@@ -1,0 +1,17 @@
+.sales {
+  padding: 35px 90px;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 270px);
+  gap: 30px;
+  margin-bottom: 100px;
+}

@@ -1,4 +1,4 @@
-import OtherProduct from 'components/ProductCard/OtherProduct';
+import OtherProduct from 'components/OtherProduct';
 import ProductInfo from 'components/ProductCard/ProductInfo';
 import TrendMonth from 'components/TrendMonth';
 import styles from './productCard.module.css';

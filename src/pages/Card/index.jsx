@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './card.module.css';
 import Good from 'components/Good';
+import { useDispatch } from 'react-redux';
+import { getCartProducts } from 'store/features/cartSlice';
 
 //icons
 import { CgClose } from "react-icons/cg";
@@ -9,6 +11,11 @@ import ProductCategoriesList from 'components/ProductCategoriesList';
 
 function Card() {
 
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getCartProducts())
+  }, [])
   return (
     <div className={styles.card}>
       <div className='container'>
@@ -28,6 +35,7 @@ function Card() {
               text='Описание гамака, основные параметры, материал'
               price='4 000'
               isRemove={true}
+              isAddCart={false}
             />
 
             <Good
@@ -36,6 +44,7 @@ function Card() {
               text='Описание гамака, основные параметры, материал'
               price='4 000'
               isRemove={true}
+              isAddCart={false}
             />
 
             <Good
@@ -44,6 +53,7 @@ function Card() {
               text='Описание гамака, основные параметры, материал'
               price='4 000'
               isRemove={true}
+              isAddCart={false}
             />
 
             <Good
@@ -52,6 +62,7 @@ function Card() {
               text='Описание гамака, основные параметры, материал'
               price='4 000'
               isRemove={true}
+              isAddCart={false}
             />
           </div>
 

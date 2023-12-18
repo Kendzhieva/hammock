@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './profileForm.module.css'
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeAvatar, editUser } from 'store/features/authSlise';
+import { changeAvatar, editUser } from 'store/features/authSlice';
 
 //icons
 import { MdEdit } from "react-icons/md";
@@ -42,7 +42,7 @@ function ProfileForm() {
             <label className={styles.avatar}>
               <input type='file' accept='img/*' onChange={handleChangeAvatar} />
               <img
-                src={user.avatar}
+                src={user.avatar || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD6P7fvoMX8ZLb9MAVnLMIPJblEBYXx-X-kv_d9GPJVfQFtCSKQIGEYAoAzOk2AR7kJEg&usqp=CAU"}
                 alt='AVATAR'
               />
             </label>

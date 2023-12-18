@@ -1,0 +1,44 @@
+.contact {
+  padding: 30px 0 150px;
+}
+
+.title{
+    text-align: center;
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.content {
+    justify-content: center;
+    display: flex;
+    gap: 110px;
+}
+
+.info {
+    width: 282px;
+}
+
+.infoTitle {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.18px;
+}
+
+.infoText {
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.14px;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.map{
+    width: 570px;
+    height: 302px;
+}

@@ -6,6 +6,8 @@ import { ToastContainer } from 'react-toastify';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import Routers from './Routers/Routers';
 import store from 'store';
+import { useEffect } from 'react';
+import { getAllProducts } from 'store/features/productsSlice';
 
 const toastifyContainerConfig = {
   position: 'top-right',

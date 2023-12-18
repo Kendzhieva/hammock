@@ -7,11 +7,12 @@ import {
 } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { authLogOut } from 'store/features/authSlise';
+import { authLogOut } from 'store/features/authSlice';
 import { IoLogOutOutline, IoLogInOutline } from "react-icons/io5";
-import Modal from 'components/Modal';
 import ModalAuth from 'components/ModalAuth';
 import { useState } from 'react';
+import { AiOutlineAppstoreAdd } from "react-icons/ai";
+import { PiListPlusBold } from "react-icons/pi";
 
 const Header = () => {
 
@@ -46,13 +47,10 @@ const Header = () => {
                     <Link to='/delivery'>Доставка и оплата </Link>
                   </li>
                   <li className={styles.topListItem}>
-                    <Link to='/'>Отзывы</Link>
-                  </li>
-                  <li className={styles.topListItem}>
                     <Link to='/blog'>Блог</Link>
                   </li>
                   <li className={styles.topListItem}>
-                    <Link to='/'>Контакты</Link>
+                    <Link to='/contact'>Контакты</Link>
                   </li>
                 </ul>
               </nav>
@@ -86,6 +84,19 @@ const Header = () => {
                       <AiOutlineUser size='22' />
                       <p>Личный кабинет</p>
                     </Link>
+                    {
+                      user?.roles[0]?.value === 'ADMIN' &&
+                      <>
+                        <Link to='/create-product' className={styles.handlersLink}>
+                          <AiOutlineAppstoreAdd size='22' />
+                          <p>Создать товар</p>
+                        </Link>
+                        <Link to='/create-blog' className={styles.handlersLink}>
+                          <PiListPlusBold size='22' />
+                          <p>Создать Блог</p>
+                        </Link>
+                      </>
+                    }
                   </>
                   :
                   <span className={styles.handlersLink} onClick={() => setShowAuthModal(true)}>
@@ -95,7 +106,7 @@ const Header = () => {
                 }
 
 
-                <Link to='/card' className={styles.handlersLink}>
+                <Link to='/cart' className={styles.handlersLink}>
                   <AiOutlineShoppingCart size='22' />
                   <p>Корзина</p>
                 </Link>
@@ -114,3 +125,12 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
+
+
+
+
+
+
